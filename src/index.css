@@ -1,3 +1,29 @@
 button {
-    margin: 20px;
+    margin: 1px;
+}
+
+.nav-item {
+    font-size: 25px;
+    letter-spacing: 0px;
+    font-weight: 600;
+    margin-left: 20px;
+
+}
+
+input {
+    text-transform: capitalize;
+    font-size: 19px;
+    letter-spacing: 1px;
+    padding: 2px 10px;
+    opacity: 0.6;
+}
+
+span {
+    font-size: 40px;
+    margin-right: 30px;
+}
+
+h1,
+p {
+    text-transform: capitalize;
 }

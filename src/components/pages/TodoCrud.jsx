@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Button from '../automs/Button';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 export default function TodoCrud() {
 
@@ -102,32 +104,75 @@ export default function TodoCrud() {
     return (
 
         <React.Fragment>
-
+            {/* 
             <input type="text" value={todoList.task} style={{ margin: "20px" }} onChange={handle} name='task' />
             <br />
             <input type="text" value={todoList.description} style={{ margin: "20px" }} onChange={handle} name='description' />
-            <button onClick={() => {
+            <Button onClick={() => {
                 if (todoList && todoList._id) {
                     updateTodoList(todoList._id)
                 } else {
                     addTodoData()
                 }
             }
-            }>{todoList && todoList._id ? "update" : "add"}</button>
+            } content={todoList && todoList._id ? " update" : "add"} /> */}
+
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-4">
+
+                    </div>
+                    <div className="col-4">
+                        <input type="text" placeholder='enter product name' value={todoList.task} style={{ margin: "20px" }} onChange={handle} name='task' />
+                        <br />
+                        <input type="text" placeholder='enter description' value={todoList.description} style={{ margin: "20px" }} onChange={handle} name='description' />
+                        <br />
+                        <Button onClick={() => {
+                            if (todoList && todoList._id) {
+                                updateTodoList(todoList._id)
+                            } else {
+                                addTodoData()
+                            }
+                        }
+                        } content={todoList && todoList._id ? " update" : "add"} />
+                    </div>
+                    <div className="col-4"></div>
+                </div>
+            </div>
+
+
             {
                 todoData.map((val, ind) => {
                     return (
                         <React.Fragment key={ind}>
 
-                            <h1>{val.task}</h1>
-                            <p>{val.description}</p>
-                            <button onClick={() => deleteTodoData(val._id)}>delete</button>
-                            <button onClick={() => viewTodo(val._id)}>update</button>
+
+
+                            {/* <span>{ind}.</span><h1 style={{ display: "inline-block" }}>{val.task}</h1>
+                                        <p>{val.description}</p>
+                                        <Button onClick={() => deleteTodoData(val._id)} content="delete" />
+                                        <Button onClick={() => viewTodo(val._id)} content="update" /> */}
+
+
+                            <div className="col-2" style={{ display: "inline-block", margin: "0px 20px" }}>
+                                <div className="container">
+
+                                    <div className="row">
+                                        <span>{ind}.</span><h1 style={{ display: "inline-block" }}>{val.task}</h1>
+                                        <p>{val.description}</p>
+                                        <Button onClick={() => deleteTodoData(val._id)} content="delete" />
+                                        <Button onClick={() => viewTodo(val._id)} content="update" />
+                                        <Link to={`/view-todo/${val._id}`} style={{ textDecoration: "none", textAlign: "center", color: "black", }}>View</Link>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </ React.Fragment>
                     )
                 })
             }
-        </React.Fragment>
+        </React.Fragment >
     )
 }
