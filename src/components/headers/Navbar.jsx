@@ -10,9 +10,7 @@ export default function Navbar() {
                         <li className="nav-item">
                             <Link to="/" className="nav-link active" aria-current="page" >home</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/Todocrud" className="nav-link active" >Todo Crud</Link>
-                        </li>
+
                         <li className="nav-item">
                             <Link to="/counter" className="nav-link active" aria-current="page" >Counter</Link>
                         </li>

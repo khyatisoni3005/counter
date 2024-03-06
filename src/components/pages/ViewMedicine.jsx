@@ -1,8 +1,9 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 
-export default function ViewTodo() {
+export default function ViewMedicine() {
 
     let { id } = useParams()
     const [list, setList] = useState([])
@@ -10,15 +11,13 @@ export default function ViewTodo() {
 
 
     useEffect(() => {
-        fetch("http://localhost:7800/list")
-            .then((res) => res.json())
+        axios.get("http://localhost:7800/list")
             .then((result) => {
                 console.log("id", id);
-                const data = result.filter((val) => id.toString() === val._id.toString())
+                console.log(result, "result view");
+                const data = result.data.filter((val) => id.toString() === val._id.toString())
                 console.log("data", data);
-
                 setList(data)
-                // console.log(datas[0].task, "datas");
 
             })
     }, [])
@@ -30,8 +29,11 @@ export default function ViewTodo() {
                     return (
                         <>
                             <div className="col-5" style={{ margin: "20px" }}>
-                                <h1>{val.task}</h1>
-                                <p>{val.description}</p>
+                                <h1>{val.name}</h1>
+                                <p>{val.price}</p>
+                                <p>{val.expiry}</p>
+                                <p>{val.quantity}</p>
+
                             </div>
                         </>
                     )
